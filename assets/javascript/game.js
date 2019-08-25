@@ -4,9 +4,9 @@ $("#numberToMatch").html(randomNumber);
 
 var uniqueValues = [];
 
-var InitResetCrystals = function () {
+var resetCrystalValues = function () {
     var crystalNumber;
-    while (uniqueValues.length < 4) {
+    while (uniqueValues.length <= 3) {
         crystalNumber = 1 + Math.floor(Math.random() * 12);
         if (jQuery.inArray(crystalNumber, uniqueValues) == '-1') {
             uniqueValues[uniqueValues.length] = crystalNumber;
@@ -20,13 +20,13 @@ var losses = 0;
 $("#totalScore").html(playerTotal);
 $("#wins").html(wins);
 $("#losses").html(losses);
-InitResetCrystals();
+resetCrystalValues();
 
 var reset = function () {
     playerTotal = 0;
     randomNumber = 18 + Math.floor(Math.random() * 120);
     uniqueValues = [];
-    InitResetCrystals();
+    resetCrystalValues();
     console.log(randomNumber);
     $("#numberToMatch").html(randomNumber);
     $("#totalScore").html(playerTotal);
@@ -35,7 +35,6 @@ var reset = function () {
 }
 
 var winCheck = function () {
-
     if (playerTotal == randomNumber) {
         $("#wins").html(wins++);
         alert("You Win!\nCongratulations!")
